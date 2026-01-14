@@ -78,15 +78,15 @@ func (f *TextFormatter) WriteChildhoodSection(b *strings.Builder, cvm ports.View
 	b.WriteString(colors.childhoodSection.Sprint("ДЕТСКАЯ МЕЧТА\n"))
 	b.WriteString(colors.childhoodSection.Sprint("-----------------\n"))
 	childhood := cvm.Childhood()
-	fmt.Fprintf(b, "%s %s\n",
+	_, _ = fmt.Fprintf(b, "%s %s\n",
 		colors.label.Sprint("Название:"),
 		colors.value.Sprint(childhood.DisplayName()),
 	)
-	fmt.Fprintf(b, "%s %s\n",
+	_, _ = fmt.Fprintf(b, "%s %s\n",
 		colors.label.Sprint("Роль:"),
 		colors.value.Sprint(childhood.DesiredRole()),
 	)
-	fmt.Fprintf(b, "%s %s %s\n",
+	_, _ = fmt.Fprintf(b, "%s %s %s\n",
 		colors.label.Sprint("Поле:"),
 		colors.value.Sprint(childhood.Field().Name()),
 		colors.secondary.Sprint("("+childhood.Field().Environment()+")"),
@@ -100,7 +100,7 @@ func (f *TextFormatter) WriteChildhoodSection(b *strings.Builder, cvm ports.View
 			if q.Name() == dream.QualityPersistence {
 				qualityNameColor = colors.persistence
 			}
-			fmt.Fprintf(b, "  %s %s %s %s\n",
+			_, _ = fmt.Fprintf(b, "  %s %s %s %s\n",
 				colors.bullet.Sprint("•"),
 				qualityNameColor.Sprint(q.Name()),
 				colors.secondary.Sprint("—"),
@@ -114,17 +114,17 @@ func (f *TextFormatter) WriteAdultSection(b *strings.Builder, cvm ports.ViewMode
 	b.WriteString(colors.adultSection.Sprint("ВЗРОСЛАЯ РОЛЬ\n"))
 	b.WriteString(colors.adultSection.Sprint("--------------\n"))
 	adult := cvm.Adult()
-	fmt.Fprintf(b, "%s %s\n",
+	_, _ = fmt.Fprintf(b, "%s %s\n",
 		colors.label.Sprint("Роль:"),
 		colors.value.Sprint(adult.RoleTitle()),
 	)
 	if desc := adult.RoleDescription(); desc != "" {
-		fmt.Fprintf(b, "%s %s\n",
+		_, _ = fmt.Fprintf(b, "%s %s\n",
 			colors.label.Sprint("Описание:"),
 			colors.value.Sprint(desc),
 		)
 	}
-	fmt.Fprintf(b, "%s %s %s\n",
+	_, _ = fmt.Fprintf(b, "%s %s %s\n",
 		colors.label.Sprint("Поле:"),
 		colors.value.Sprint(adult.Field().Name()),
 		colors.secondary.Sprint("("+adult.Field().Environment()+")"),
@@ -134,7 +134,7 @@ func (f *TextFormatter) WriteAdultSection(b *strings.Builder, cvm ports.ViewMode
 	if len(stack) > 0 {
 		b.WriteString(colors.label.Sprint("Стек:\n"))
 		for _, s := range stack {
-			fmt.Fprintf(b, "  %s %s\n",
+			_, _ = fmt.Fprintf(b, "  %s %s\n",
 				colors.bullet.Sprint("•"),
 				colors.stack.Sprint(s),
 			)
@@ -149,7 +149,7 @@ func (f *TextFormatter) WriteAdultSection(b *strings.Builder, cvm ports.ViewMode
 			if q.Name() == dream.QualityPersistence {
 				traitNameColor = colors.persistence
 			}
-			fmt.Fprintf(b, "  %s %s %s %s\n",
+			_, _ = fmt.Fprintf(b, "  %s %s %s %s\n",
 				colors.bullet.Sprint("•"),
 				traitNameColor.Sprint(q.Name()),
 				colors.secondary.Sprint("—"),

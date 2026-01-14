@@ -18,17 +18,17 @@ type App interface {
 }
 
 type Logger interface {
-	Println(v ...interface{})
-	Printf(format string, v ...interface{})
+	Println(v ...any)
+	Printf(format string, v ...any)
 }
 
 type defaultLogger struct{}
 
-func (l *defaultLogger) Println(v ...interface{}) {
+func (l *defaultLogger) Println(v ...any) {
 	log.Println(v...)
 }
 
-func (l *defaultLogger) Printf(format string, v ...interface{}) {
+func (l *defaultLogger) Printf(format string, v ...any) {
 	log.Printf(format, v...)
 }
 
@@ -37,12 +37,12 @@ type serviceLogger struct {
 	logger      Logger
 }
 
-func (l *serviceLogger) Println(v ...interface{}) {
+func (l *serviceLogger) Println(v ...any) {
 	prefix := fmt.Sprintf("[%s]", l.serviceName)
-	l.logger.Println(append([]interface{}{prefix}, v...)...)
+	l.logger.Println(append([]any{prefix}, v...)...)
 }
 
-func (l *serviceLogger) Printf(format string, v ...interface{}) {
+func (l *serviceLogger) Printf(format string, v ...any) {
 	prefix := fmt.Sprintf("[%s] ", l.serviceName)
 	l.logger.Printf(prefix+format, v...)
 }
