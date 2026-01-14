@@ -23,10 +23,9 @@ func main() {
 		os.Exit(1)
 	}
 
-	exitCode := lifecycle.RunWithGracefulShutdown(
+	lifecycle.RunWithGracefulShutdown(
 		a,
 		lifecycle.WithShutdownTimeout(shutdownTimeout),
 		lifecycle.WithServiceName("field-switcher"),
 	)
-	os.Exit(exitCode)
 }

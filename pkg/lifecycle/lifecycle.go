@@ -78,7 +78,7 @@ func WithServiceName(name string) Option {
 func RunWithGracefulShutdown(
 	application App,
 	opts ...Option,
-) int {
+) {
 	cfg := &config{
 		shutdownTimeout: defaultShutdownTimeout,
 		logger:          &defaultLogger{},
@@ -174,5 +174,4 @@ func RunWithGracefulShutdown(
 	}
 
 	logger.Println("Application stopped.")
-	return exitCode
 }
